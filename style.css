@@ -41,16 +41,16 @@ button {
   height: 100px;
 }
 
-.info {
+.choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 100px;
 }
 
 details {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 12px;
-  width: 300px;
+  padding: 20px;
   height: fit-content;
 }

@@ -57,7 +57,13 @@ const loadRaces = () => {
 };
 
 const getRaceItem = (race) => {
-  return `<li>${race.label}${getSubRaceList(race)}</li>`;
+  return `<li>
+            <label>
+              <input type='checkbox' name='race' value='${race.id}' checked/>
+              ${race.label}
+            </label>
+            ${getSubRaceList(race)}
+          </li>`;
 };
 
 const getSubRaceList = (race) => {
@@ -75,7 +81,15 @@ const loadClasses = () => {
 };
 
 const getClassItem = (classItem) => {
-  return `<li>${classItem.label}${getSubClassList(classItem)}</li>`;
+  return `<li>
+            <label>
+              <input type='checkbox' name='class' value='${
+                classItem.id
+              }' checked/>
+              ${classItem.label}
+            </label>
+            ${getSubClassList(classItem)}
+          </li>`;
 };
 
 const getSubClassList = (classItem) => {
@@ -85,11 +99,11 @@ const getSubClassList = (classItem) => {
 };
 
 window.generate = () => {
-  const randomRace = getRandomItem(races);
+  const randomRace = getRandomItem(getAllAvailableRaces());
   const randomSubRace =
     randomRace.subRaces.length > 0 ? getRandomItem(randomRace.subRaces) : null;
 
-  const randomClass = getRandomItem(classes);
+  const randomClass = getRandomItem(getAllAvailableClasses());
   const randomSubClass = getRandomItem(randomClass.subClasses);
 
   writeCharacterElements(
@@ -98,6 +112,24 @@ window.generate = () => {
     randomClass,
     randomSubClass
   );
+};
+
+const getAllAvailableRaces = () => {
+  const allCheckedRaces = Array.from(
+    document.querySelectorAll("input[name='race']:checked")
+  ).map((checkbox) => checkbox.value);
+  return allCheckedRaces.length > 0
+    ? races.filter((race) => allCheckedRaces.includes(race.id))
+    : races;
+};
+
+const getAllAvailableClasses = () => {
+  const allCheckedClasses = Array.from(
+    document.querySelectorAll("input[name='class']:checked")
+  ).map((checkbox) => checkbox.value);
+  return allCheckedClasses.length > 0
+    ? classes.filter((classItem) => allCheckedClasses.includes(classItem.id))
+    : classes;
 };
 
 const writeCharacterElements = (race, subRace, classItem, subClass) => {
