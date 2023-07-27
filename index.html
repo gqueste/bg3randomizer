@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baldur's Gate 3 Character Randomizer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <img
+      class="logo"
+      src="https://baldursgate3.game/png/logo-bg3.png"
+      alt="bg3 logo"
+    />
+    <h1>Baldur's Gate 3 Character Randomizer</h1>
+    <p>
+      Because it is hard to choose and you want an easy combo before going off
+      with your mates, enjoy this random character creator.
+    </p>
+    <p>
+      Note that it will choose a race before selecting a random sub-race (same
+      for classes).
+    </p>
+    <button onclick="generate()">Generate a random character</button>
+    <p id="result"></p>
+    <div id="icons">
+      <img id="icon-race" />
+      <img id="icon-class" />
+    </div>
+    <div class="info">
+      <details>
+        <summary>Races</summary>
+        <ul id="races-list"></ul>
+      </details>
+      <details>
+        <summary>Classes</summary>
+        <ul id="classes-list"></ul>
+      </details>
+    </div>
+  </body>
+</html>
