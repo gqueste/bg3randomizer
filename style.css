@@ -54,3 +54,13 @@ details {
   padding: 20px;
   height: fit-content;
 }
+
+a {
+  color: #b95500;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e6820f;
+  text-decoration: underline;
+}

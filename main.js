@@ -133,15 +133,19 @@ const getAllAvailableClasses = () => {
 };
 
 const writeCharacterElements = (race, subRace, classItem, subClass) => {
-  const raceStr = subRace ? subRace.label : race.label;
-  const classStr = `${classItem.label} ( ${subClass.label} )`;
-  document.getElementById("result").textContent = `${raceStr} ${classStr}`;
+  const raceStr = subRace
+    ? `<a href='${subRace.link}'>${subRace.label}</a>`
+    : `<a href='${race.link}'>${race.label}</a>`;
+  const classStr = `<a href='${classItem.link}'>${classItem.label}</a> ( <a href='${subClass.link}'>${subClass.label}</a> )`;
+  document.getElementById("result").innerHTML = `${raceStr} ${classStr}`;
   const iconRaceImg = document.getElementById("icon-race");
   iconRaceImg.src = race.icon;
   iconRaceImg.alt = race.label;
+  document.getElementById("race-link").href = race.link;
   const iconClassImg = document.getElementById("icon-class");
   iconClassImg.src = classItem.icon;
   iconClassImg.alt = classItem.label;
+  document.getElementById("class-link").href = classItem.link;
   reflectCharacterToPath(
     race.id,
     subRace && subRace.id,
